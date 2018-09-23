@@ -9,6 +9,7 @@
     tools:showIn="@layout/activity_main">
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -21,5 +22,41 @@
             android:src="@drawable/main_screen_background" />
 
     </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.20">
+
+        <Button
+            android:id="@+id/play_button"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/play_button"
+            android:textSize="40sp" />
+
+        <Button
+            android:id="@+id/settings_button"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_button"
+            android:textSize="40sp" />
+
+        <Button
+            android:id="@+id/quit_button"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/quit_button"
+            android:textSize="40sp" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
