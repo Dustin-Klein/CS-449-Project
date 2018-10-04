@@ -1,7 +1,9 @@
-package com.cs449.dbklein.chess;
+package com.cs449.dbklein.chess.display;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import com.cs449.dbklein.chess.R;
 
 public class GameActivity extends AppCompatActivity {
 

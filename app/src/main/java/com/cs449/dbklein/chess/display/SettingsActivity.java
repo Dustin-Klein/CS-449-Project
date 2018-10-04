@@ -1,4 +1,4 @@
-package com.cs449.dbklein.chess;
+package com.cs449.dbklein.chess.display;
 
 import android.annotation.TargetApi;
 import android.app.ActionBar;
@@ -18,6 +18,8 @@ import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
 import android.view.MenuItem;
+
+import com.cs449.dbklein.chess.R;
 
 import java.util.List;
 
