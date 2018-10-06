@@ -6,6 +6,5 @@ public class Board {
 
     public Board() {
         board = new Cell[8][8];
-
     }
 }

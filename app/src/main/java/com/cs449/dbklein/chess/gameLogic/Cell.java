@@ -14,10 +14,11 @@ public class Cell {
         return occupied;
     }
 
+    public void setPiece(Piece piece) {
+        this.piece = piece;
+    }
+
     public Piece getPiece() {
-        if (occupied)
-            return piece;
-        else
-            return null;
+        return piece;
     }
 }

@@ -2,17 +2,29 @@ package com.cs449.dbklein.chess.gameLogic;
 
 public abstract class Piece {
 
+    protected PieceType type;
     protected Color color;
-    protected int rank, file;
 
-    public Piece(Color color, int rank, int file) {
+    public Piece(PieceType type, Color color) {
         this.color = color;
-
-        this.rank = rank;
-        this.file = file;
+        this.type = type;
     }
 
-    protected abstract void moveTo();
+    protected abstract PathTrace tracePaths(int sourceX, int sourceY, int destX, int destY);
 
-    protected abstract boolean isValidMove(int toRank, int toFile);
+    public PieceType getType() {
+        return type;
+    }
+
+    public void setType(PieceType type) {
+        this.type = type;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
 }
