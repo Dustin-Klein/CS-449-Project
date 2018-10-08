@@ -5,9 +5,15 @@ public class Cell {
     private Piece piece;
     private boolean occupied;
 
-    public Cell() {
+    private int rank;
+    private int file;
+
+    public Cell(int rank, int file) {
         piece = null;
         occupied = false;
+
+        this.rank = rank;
+        this.file = file;
     }
 
     public boolean isOccupied() {
@@ -20,5 +26,10 @@ public class Cell {
 
     public Piece getPiece() {
         return piece;
+    }
+
+    public void display() {
+        if (occupied)
+            piece.display(rank, file);
     }
 }
