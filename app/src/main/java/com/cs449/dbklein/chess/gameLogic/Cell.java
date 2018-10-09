@@ -3,15 +3,13 @@ package com.cs449.dbklein.chess.gameLogic;
 public class Cell {
 
     private Piece piece;
-    private boolean occupied;
 
-    public Cell() {
-        piece = null;
-        occupied = false;
+    Cell() {
+        piece = new EmptyPiece();
     }
 
     public boolean isOccupied() {
-        return occupied;
+        return piece.getType() != PieceType.EMPTY;
     }
 
     public void setPiece(Piece piece) {
@@ -20,12 +18,5 @@ public class Cell {
 
     public Piece getPiece() {
         return piece;
-    }
-
-    public int getPieceImageResource() {
-        if (occupied)
-            return piece.getImageResource();
-        else
-            return Integer.parseInt(null);
     }
 }

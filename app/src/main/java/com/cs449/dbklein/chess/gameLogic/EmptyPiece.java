@@ -1,16 +1,14 @@
 package com.cs449.dbklein.chess.gameLogic;
 
-import com.cs449.dbklein.chess.R;
+public class EmptyPiece extends Piece {
 
-public class Pawn extends Piece {
-
-    public Pawn(Color color) {
-        super(PieceType.PAWN, color);
+    public EmptyPiece() {
+        super(PieceType.EMPTY, Color.EMPTY);
     }
 
     @Override
     public int getImageResource() {
-        return R.drawable.gaming_pawn_icon;
+        return Integer.parseInt(null);
     }
 
     @Override

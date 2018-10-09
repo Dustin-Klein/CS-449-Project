@@ -5,7 +5,7 @@ public abstract class Piece {
     protected PieceType type;
     protected Color color;
 
-    public Piece(PieceType type, Color color) {
+    Piece(PieceType type, Color color) {
         this.color = color;
         this.type = type;
     }

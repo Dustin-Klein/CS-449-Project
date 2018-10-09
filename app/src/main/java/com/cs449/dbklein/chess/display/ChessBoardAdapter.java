@@ -1,5 +1,6 @@
 package com.cs449.dbklein.chess.display;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,12 +12,12 @@ import com.cs449.dbklein.chess.R;
 import com.cs449.dbklein.chess.gameLogic.Board;
 import com.cs449.dbklein.chess.gameLogic.Cell;
 
-public class ChessBoardAdapter extends BaseAdapter{
+public class ChessBoardAdapter extends BaseAdapter {
 
     private final Context mContext;
     private final Board board;
 
-    public ChessBoardAdapter(Context mContext, Board board) {
+    ChessBoardAdapter(Context mContext, Board board) {
         this.mContext = mContext;
         this.board = board;
     }
@@ -36,6 +37,7 @@ public class ChessBoardAdapter extends BaseAdapter{
         return 0;
     }
 
+    @SuppressLint("InflateParams")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -48,7 +50,9 @@ public class ChessBoardAdapter extends BaseAdapter{
         }
 
         final ImageView imageView = convertView.findViewById(R.id.cell);
-        imageView.setImageResource(cell.getPiece().getImageResource());
+
+        if (cell.isOccupied())
+            imageView.setImageResource(cell.getPiece().getImageResource());
 
         return convertView;
     }
