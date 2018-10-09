@@ -10,9 +10,7 @@ public abstract class Piece {
         this.type = type;
     }
 
-    public void display(int rank, int file) {
-
-    }
+    public abstract int getImageResource();
 
     protected abstract PathTrace tracePaths(int sourceX, int sourceY, int destX, int destY);
 

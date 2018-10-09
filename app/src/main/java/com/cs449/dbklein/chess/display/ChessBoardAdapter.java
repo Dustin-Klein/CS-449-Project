@@ -1,12 +1,15 @@
 package com.cs449.dbklein.chess.display;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.TextView;
+import android.widget.ImageView;
 
+import com.cs449.dbklein.chess.R;
 import com.cs449.dbklein.chess.gameLogic.Board;
+import com.cs449.dbklein.chess.gameLogic.Cell;
 
 public class ChessBoardAdapter extends BaseAdapter{
 
@@ -20,14 +23,7 @@ public class ChessBoardAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
-        int count = 0;
-
-        for (int i = 0; i < board.getWidth(); i++) {
-            for (int j = 0; j < board.getHeight(); j++) {
-                count += 1;
-            }
-        }
-        return count;
+        return board.getNumCol() * board.getNumRow();
     }
 
     @Override
@@ -42,8 +38,18 @@ public class ChessBoardAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        TextView dummyTextView = new TextView(mContext);
-        dummyTextView.setText(String.valueOf(position));
-        return dummyTextView;
+
+        System.out.println("Cell location: " + position / 8 + ", " + position % 8);
+        final Cell cell = board.getCell(position / 8, position % 8);
+
+        if (convertView == null) {
+            final LayoutInflater layoutInflater = LayoutInflater.from(mContext);
+            convertView = layoutInflater.inflate(R.layout.cell_layout, null);
+        }
+
+        final ImageView imageView = convertView.findViewById(R.id.cell);
+        imageView.setImageResource(cell.getPiece().getImageResource());
+
+        return convertView;
     }
 }

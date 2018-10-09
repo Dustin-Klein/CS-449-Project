@@ -5,15 +5,9 @@ public class Cell {
     private Piece piece;
     private boolean occupied;
 
-    private int rank;
-    private int file;
-
-    public Cell(int rank, int file) {
+    public Cell() {
         piece = null;
         occupied = false;
-
-        this.rank = rank;
-        this.file = file;
     }
 
     public boolean isOccupied() {
@@ -28,8 +22,10 @@ public class Cell {
         return piece;
     }
 
-    public void display() {
+    public int getPieceImageResource() {
         if (occupied)
-            piece.display(rank, file);
+            return piece.getImageResource();
+        else
+            return Integer.parseInt(null);
     }
 }

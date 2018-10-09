@@ -9,25 +9,23 @@ public class Board {
 
     public Board() {
         board = new Cell[BOARD_WIDTH][BOARD_HEIGHT];
+
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                board[i][j] = new Cell();
+            }
+        }
     }
 
     public Cell getCell(int rank, int file) {
         return board[rank][file];
     }
 
-    public void displayBoard() {
-        for (int i = 0; i < BOARD_WIDTH; i++) {
-            for (int j = 0; j < BOARD_HEIGHT; j++) {
-                board[i][j].display();
-            }
-        }
-    }
-
-    public int getWidth() {
+    public int getNumCol() {
         return BOARD_WIDTH;
     }
 
-    public int getHeight() {
+    public int getNumRow() {
         return BOARD_HEIGHT;
     }
 }
