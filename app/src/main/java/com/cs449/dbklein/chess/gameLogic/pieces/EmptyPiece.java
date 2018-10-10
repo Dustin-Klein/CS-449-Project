@@ -1,4 +1,9 @@
-package com.cs449.dbklein.chess.gameLogic;
+package com.cs449.dbklein.chess.gameLogic.pieces;
+
+import com.cs449.dbklein.chess.gameLogic.PathTrace;
+import com.cs449.dbklein.chess.gameLogic.pieces.Color;
+import com.cs449.dbklein.chess.gameLogic.pieces.Piece;
+import com.cs449.dbklein.chess.gameLogic.pieces.PieceType;
 
 public class EmptyPiece extends Piece {
 

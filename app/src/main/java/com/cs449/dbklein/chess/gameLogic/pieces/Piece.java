@@ -1,4 +1,6 @@
-package com.cs449.dbklein.chess.gameLogic;
+package com.cs449.dbklein.chess.gameLogic.pieces;
+
+import com.cs449.dbklein.chess.gameLogic.PathTrace;
 
 public abstract class Piece {
 

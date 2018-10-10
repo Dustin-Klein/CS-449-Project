@@ -1,5 +1,9 @@
 package com.cs449.dbklein.chess.gameLogic;
 
+import com.cs449.dbklein.chess.gameLogic.pieces.EmptyPiece;
+import com.cs449.dbklein.chess.gameLogic.pieces.Piece;
+import com.cs449.dbklein.chess.gameLogic.pieces.PieceType;
+
 public class Cell {
 
     private Piece piece;

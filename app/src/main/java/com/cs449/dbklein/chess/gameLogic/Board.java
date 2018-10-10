@@ -7,7 +7,7 @@ public class Board {
 
     private Cell[][] board;
 
-    public Board() {
+    Board() {
         board = new Cell[BOARD_WIDTH][BOARD_HEIGHT];
 
         for (int i = 0; i < 8; i++) {
@@ -17,8 +17,8 @@ public class Board {
         }
     }
 
-    public Cell getCell(int rank, int file) {
-        return board[rank][file];
+    public Cell getCell(int row, int col) {
+        return board[row][col];
     }
 
     public int getNumCol() {

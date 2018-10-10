@@ -1,4 +1,4 @@
-package com.cs449.dbklein.chess.gameLogic;
+package com.cs449.dbklein.chess.gameLogic.pieces;
 
 public enum PieceType {
     KING,

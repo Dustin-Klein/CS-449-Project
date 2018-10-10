@@ -41,8 +41,10 @@ public class ChessBoardAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        System.out.println("Cell location: " + position / 8 + ", " + position % 8);
-        final Cell cell = board.getCell(position / 8, position % 8);
+        int row = position / 8;
+        int col = position % 8;
+
+        final Cell cell = board.getCell(row, col);
 
         if (convertView == null) {
             final LayoutInflater layoutInflater = LayoutInflater.from(mContext);
