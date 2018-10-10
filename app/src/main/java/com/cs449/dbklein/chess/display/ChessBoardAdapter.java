@@ -2,6 +2,8 @@ package com.cs449.dbklein.chess.display;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,8 +30,11 @@ public class ChessBoardAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int i) {
-        return null;
+    public Object getItem(int position) {
+        int row = position / 8;
+        int col = position % 8;
+
+        return board.getCell(row, col);
     }
 
     @Override
@@ -37,6 +42,7 @@ public class ChessBoardAdapter extends BaseAdapter {
         return 0;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @SuppressLint("InflateParams")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -51,11 +57,10 @@ public class ChessBoardAdapter extends BaseAdapter {
             convertView = layoutInflater.inflate(R.layout.cell_layout, null);
         }
 
-        final ImageView imageView = convertView.findViewById(R.id.cell);
-
-        if (cell.isOccupied())
-            imageView.setImageResource(cell.getPiece().getImageResource());
-
+        if (cell.isOccupied()) {
+            final ImageView cellImageView = convertView.findViewById(R.id.cell);
+            cellImageView.setImageResource(cell.getPiece().getImageResource());
+        }
         return convertView;
     }
 }
