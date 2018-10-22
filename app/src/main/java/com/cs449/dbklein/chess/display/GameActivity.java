@@ -33,11 +33,13 @@ public class GameActivity extends AppCompatActivity {
 
                 final Cell cell = game.getBoard().getCell(row, col);
 
+                if (cell.isOccupied()) {
+                    System.out.println(cell.getPiece().toString() + " at " + row + "," + col);
+                }
+
                 // This tells the GridView to redraw itself
-                // in turn calling your BooksAdapter's getView method again for each cell
                 chessBoardAdapter.notifyDataSetChanged();
             }
         });
-
     }
 }

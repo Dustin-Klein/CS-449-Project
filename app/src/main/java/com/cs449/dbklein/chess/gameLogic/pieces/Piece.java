@@ -1,6 +1,9 @@
 package com.cs449.dbklein.chess.gameLogic.pieces;
 
-import com.cs449.dbklein.chess.gameLogic.PathTrace;
+import com.cs449.dbklein.chess.gameLogic.Board;
+import com.cs449.dbklein.chess.gameLogic.Move;
+
+import java.util.ArrayList;
 
 public abstract class Piece {
 
@@ -14,7 +17,7 @@ public abstract class Piece {
 
     public abstract int getImageResource();
 
-    protected abstract PathTrace tracePaths(int sourceX, int sourceY, int destX, int destY);
+    protected abstract ArrayList<Move> getValidMoves(int sourceX, int sourceY, int destX, int destY, Board board);
 
     public PieceType getType() {
         return type;
@@ -30,5 +33,13 @@ public abstract class Piece {
 
     public void setColor(Color color) {
         this.color = color;
+    }
+
+    @Override
+    public String toString() {
+        return "Piece{" +
+                "type=" + type +
+                ", \tcolor=" + color +
+                '}';
     }
 }

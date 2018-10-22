@@ -3,7 +3,10 @@ package com.cs449.dbklein.chess.gameLogic.pieces;
 import android.content.res.Resources;
 
 import com.cs449.dbklein.chess.R;
-import com.cs449.dbklein.chess.gameLogic.PathTrace;
+import com.cs449.dbklein.chess.gameLogic.Board;
+import com.cs449.dbklein.chess.gameLogic.Move;
+
+import java.util.ArrayList;
 
 public class Queen extends Piece {
 
@@ -24,7 +27,7 @@ public class Queen extends Piece {
     }
 
     @Override
-    protected PathTrace tracePaths(int sourceX, int sourceY, int destX, int destY) {
+    protected ArrayList<Move> getValidMoves(int sourceX, int sourceY, int destX, int destY, Board board) {
         return null;
     }
 }

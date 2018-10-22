@@ -41,7 +41,6 @@ public class Game {
         board.getCell(7,5).setPiece(new Bishop(Color.WHITE));
         board.getCell(7,3).setPiece(new Queen(Color.WHITE));
         board.getCell(7,4).setPiece(new King(Color.WHITE));
-
         for (int i = 0; i < 8; i++) {
             board.getCell(6, i).setPiece(new Pawn(Color.WHITE));
         }

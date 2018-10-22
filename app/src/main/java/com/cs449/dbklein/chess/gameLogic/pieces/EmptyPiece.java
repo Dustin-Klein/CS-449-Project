@@ -1,9 +1,9 @@
 package com.cs449.dbklein.chess.gameLogic.pieces;
 
-import com.cs449.dbklein.chess.gameLogic.PathTrace;
-import com.cs449.dbklein.chess.gameLogic.pieces.Color;
-import com.cs449.dbklein.chess.gameLogic.pieces.Piece;
-import com.cs449.dbklein.chess.gameLogic.pieces.PieceType;
+import com.cs449.dbklein.chess.gameLogic.Board;
+import com.cs449.dbklein.chess.gameLogic.Move;
+
+import java.util.ArrayList;
 
 public class EmptyPiece extends Piece {
 
@@ -17,7 +17,7 @@ public class EmptyPiece extends Piece {
     }
 
     @Override
-    protected PathTrace tracePaths(int sourceX, int sourceY, int destX, int destY) {
+    protected ArrayList<Move> getValidMoves(int sourceX, int sourceY, int destX, int destY, Board board) {
         return null;
     }
 }

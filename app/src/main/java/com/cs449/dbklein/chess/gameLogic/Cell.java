@@ -7,9 +7,11 @@ import com.cs449.dbklein.chess.gameLogic.pieces.PieceType;
 public class Cell {
 
     private Piece piece;
+    private boolean selected;
 
     Cell() {
         piece = new EmptyPiece();
+        selected = false;
     }
 
     public boolean isOccupied() {
@@ -22,5 +24,13 @@ public class Cell {
 
     public Piece getPiece() {
         return piece;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 }
