@@ -12,6 +12,8 @@ import com.cs449.dbklein.chess.gameLogic.Game;
 
 public class GameActivity extends AppCompatActivity {
 
+    private Cell selectedCell = null;
+
     private Game game;
 
     @Override
@@ -33,8 +35,24 @@ public class GameActivity extends AppCompatActivity {
 
                 final Cell cell = game.getBoard().getCell(row, col);
 
-                if (cell.isOccupied()) {
-                    System.out.println(cell.getPiece().toString() + " at " + row + "," + col);
+                if (selectedCell != null) {
+                    if (selectedCell == cell) {
+                        System.out.println("clicking the selected cell");
+                        cell.setSelected(false);
+                        selectedCell = null;
+                    } else {
+                        System.out.println("Should move to " + row + "," + col);
+                        cell.setSelected(false);
+                        selectedCell = null;
+                    }
+                } else {
+                    if (cell.isOccupied()) {
+                        System.out.println("Selected " + cell.getPiece().toString() + " at " + row + "," + col);
+                        cell.setSelected(true);
+                        selectedCell = cell;
+                    } else {
+                        System.out.println("Can't select an empty cell");
+                    }
                 }
 
                 // This tells the GridView to redraw itself

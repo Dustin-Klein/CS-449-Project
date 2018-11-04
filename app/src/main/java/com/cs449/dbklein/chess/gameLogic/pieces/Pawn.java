@@ -28,6 +28,16 @@ public class Pawn extends Piece {
 
     @Override
     protected ArrayList<Move> getValidMoves(int sourceX, int sourceY, int destX, int destY, Board board) {
-        return null;
+        if (board.getCell(sourceX, sourceY).getPiece() != this)
+            throw new IllegalArgumentException("Piece not matching up at cells");
+
+        switch (color) {
+            case WHITE:
+                return null;
+            case BLACK:
+                return null;
+            default:
+                return null;
+        }
     }
 }
