@@ -9,6 +9,9 @@ public class Cell {
     private Piece piece;
     private boolean selected;
 
+    private int row;
+    private int col;
+
     Cell() {
         piece = new EmptyPiece();
         selected = false;
@@ -32,5 +35,21 @@ public class Cell {
 
     public void setSelected(boolean selected) {
         this.selected = selected;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public int getCol() {
+        return col;
+    }
+
+    public void setCol(int col) {
+        this.col = col;
     }
 }

@@ -59,14 +59,8 @@ public class ChessBoardAdapter extends BaseAdapter {
 
         if (cell.isOccupied()) {
             ImageView cellImageView = convertView.findViewById(R.id.cell);
-            cellImageView.setImageResource(cell.getPiece().getImageResource());
-
-            if (cell.isSelected()) {
-                System.out.println(cell.getPiece().toString() + " should be green");
-                ImageView selectedImageView = convertView.findViewById(R.id.cell);
-                selectedImageView.setImageResource(R.drawable.green_square);
-                selectedImageView.setImageAlpha(100);
-            }
+            cellImageView.setImageResource(cell.isSelected() ? R.drawable.green_square : cell.getPiece().getImageResource());
+            cellImageView.setImageAlpha(cell.isSelected() ? 100 : 255);
         }
         return convertView;
     }

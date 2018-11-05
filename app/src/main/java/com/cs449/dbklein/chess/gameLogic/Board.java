@@ -1,5 +1,9 @@
 package com.cs449.dbklein.chess.gameLogic;
 
+import com.cs449.dbklein.chess.gameLogic.pieces.Piece;
+
+import java.util.ArrayList;
+
 public class Board {
 
     private final int BOARD_WIDTH = 8;
@@ -13,6 +17,8 @@ public class Board {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 board[i][j] = new Cell();
+                board[i][j].setRow(i);
+                board[i][j].setCol(j);
             }
         }
     }
@@ -27,5 +33,26 @@ public class Board {
 
     public int getNumRow() {
         return BOARD_HEIGHT;
+    }
+
+    public boolean makeMove(Move move) {
+        Cell sourceCell = board[move.getSourceRow()][move.getSourceCol()];
+        Piece pieceToMove = sourceCell.getPiece();
+        System.out.println("Requested Move: \n" + move.toString() + "\nPossible Moves: ");
+        ArrayList<Move> possibleMoves = pieceToMove.getValidMoves(move.getSourceRow(), move.getSourceCol(), this);
+        for (Move psm : possibleMoves) {
+            System.out.println(psm.toString());
+        }
+
+        boolean isValidMove = false;
+        for (Move possibleMove : possibleMoves) {
+            if (move.equals(possibleMove))
+                isValidMove = true;
+        }
+        return isValidMove;
+    }
+
+    public boolean inBounds(int pos) {
+        return pos >= 0 && pos < BOARD_HEIGHT;
     }
 }

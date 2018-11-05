@@ -17,7 +17,7 @@ public class EmptyPiece extends Piece {
     }
 
     @Override
-    protected ArrayList<Move> getValidMoves(int sourceX, int sourceY, int destX, int destY, Board board) {
+    public ArrayList<Move> getValidMoves(int sourceRow, int sourceCol, Board board) {
         return null;
     }
 }

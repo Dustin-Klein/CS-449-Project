@@ -17,7 +17,9 @@ public abstract class Piece {
 
     public abstract int getImageResource();
 
-    protected abstract ArrayList<Move> getValidMoves(int sourceX, int sourceY, int destX, int destY, Board board);
+    public abstract ArrayList<Move> getValidMoves(int sourceRow, int sourceCol, Board board);
+
+//    public abstract boolean isValidDestination(int sourceRow, int sourceCol, int destRow, int destCol, Board board);
 
     public PieceType getType() {
         return type;

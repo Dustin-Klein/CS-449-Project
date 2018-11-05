@@ -27,7 +27,31 @@ public class King extends Piece {
     }
 
     @Override
-    protected ArrayList<Move> getValidMoves(int sourceX, int sourceY, int destX, int destY, Board board) {
-        return null;
+    public ArrayList<Move> getValidMoves(int sourceRow, int sourceCol, Board board) {
+        ArrayList<Move> validMoves = new ArrayList<>();
+
+        for (int i = -1; i <= 1; i++) {
+            for (int j = -1; j <= 1; j++) {
+                if (i != 0 || j != 0) {
+                    int destRow = sourceRow + i;
+                    int destCol = sourceCol + j;
+
+                    if (isValidDestination(sourceRow, sourceCol, destRow, destCol, board))
+                        validMoves.add(new Move(sourceRow, sourceCol, destRow, destCol));
+                }
+            }
+        }
+        return validMoves;
+    }
+
+    public boolean isValidDestination(int sourceRow, int sourceCol, int destRow, int destCol, Board board) {
+        if (!board.inBounds(destRow) || !board.inBounds(destCol))
+            return false;
+
+        if (board.getCell(destRow, destCol).isOccupied()) {
+            return board.getCell(destRow, destCol).getPiece().getColor() != color;
+        }
+
+        return true;
     }
 }
