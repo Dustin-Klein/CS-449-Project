@@ -28,6 +28,9 @@ public class King extends Piece {
 
     @Override
     public ArrayList<Move> getValidMoves(int sourceRow, int sourceCol, Board board) {
+        if (board.getCell(sourceRow, sourceCol).getPiece() != this)
+            throw new IllegalStateException("Piece not matching up at cells");
+
         ArrayList<Move> validMoves = new ArrayList<>();
 
         for (int i = -1; i <= 1; i++) {
@@ -36,16 +39,17 @@ public class King extends Piece {
                     int destRow = sourceRow + i;
                     int destCol = sourceCol + j;
 
-                    if (isValidDestination(sourceRow, sourceCol, destRow, destCol, board))
-                        validMoves.add(new Move(sourceRow, sourceCol, destRow, destCol));
+                    if (isValidDestination(destRow, destCol, board))
+                        validMoves.add(new Move(sourceRow, sourceCol, destRow, destCol, this));
                 }
             }
         }
         return validMoves;
     }
 
-    public boolean isValidDestination(int sourceRow, int sourceCol, int destRow, int destCol, Board board) {
-        if (!board.inBounds(destRow) || !board.inBounds(destCol))
+    @Override
+    protected boolean isValidDestination(int destRow, int destCol, Board board) {
+        if (!board.inBounds(destRow, destCol))
             return false;
 
         if (board.getCell(destRow, destCol).isOccupied()) {

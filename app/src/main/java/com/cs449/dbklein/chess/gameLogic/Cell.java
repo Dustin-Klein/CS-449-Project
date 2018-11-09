@@ -52,4 +52,14 @@ public class Cell {
     public void setCol(int col) {
         this.col = col;
     }
+
+    @Override
+    public String toString() {
+        return "Cell{" +
+                "piece=" + piece +
+                ", selected=" + selected +
+                ", row=" + row +
+                ", col=" + col +
+                '}';
+    }
 }

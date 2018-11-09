@@ -1,5 +1,6 @@
 package com.cs449.dbklein.chess.gameLogic;
 
+import com.cs449.dbklein.chess.gameLogic.pieces.EmptyPiece;
 import com.cs449.dbklein.chess.gameLogic.pieces.Piece;
 
 import java.util.ArrayList;
@@ -36,23 +37,27 @@ public class Board {
     }
 
     public boolean makeMove(Move move) {
-        Cell sourceCell = board[move.getSourceRow()][move.getSourceCol()];
-        Piece pieceToMove = sourceCell.getPiece();
-        System.out.println("Requested Move: \n" + move.toString() + "\nPossible Moves: ");
-        ArrayList<Move> possibleMoves = pieceToMove.getValidMoves(move.getSourceRow(), move.getSourceCol(), this);
-        for (Move psm : possibleMoves) {
-            System.out.println(psm.toString());
-        }
-
         boolean isValidMove = false;
+
+        Cell sourceCell = board[move.getSourceRow()][move.getSourceCol()];
+        Cell destCell = board[move.getDestRow()][move.getDestCol()];
+        Piece pieceToMove = sourceCell.getPiece();
+
+        ArrayList<Move> possibleMoves = pieceToMove.getValidMoves(move.getSourceRow(), move.getSourceCol(), this);
         for (Move possibleMove : possibleMoves) {
             if (move.equals(possibleMove))
                 isValidMove = true;
         }
+
+        if (isValidMove) {
+            destCell.setPiece(pieceToMove);
+            sourceCell.setPiece(new EmptyPiece());
+        }
+
         return isValidMove;
     }
 
-    public boolean inBounds(int pos) {
-        return pos >= 0 && pos < BOARD_HEIGHT;
+    public boolean inBounds(int row, int col) {
+        return (row >= 0 && row < BOARD_HEIGHT) && (col >= 0 && col < BOARD_WIDTH);
     }
 }

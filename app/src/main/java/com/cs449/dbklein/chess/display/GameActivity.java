@@ -41,22 +41,18 @@ public class GameActivity extends AppCompatActivity {
 
                 if (selectedCell != null) {
                     if (selectedCell == cell) {
-                        System.out.println("clicking the selected cell");
                         cell.setSelected(false);
                         selectedCell = null;
                     } else {
-                        System.out.println("Should move to " + row + "," + col);
-                        System.out.println("Successful move: " + board.makeMove(new Move(selectedCell.getRow(), selectedCell.getCol(), row, col)));
-                        cell.setSelected(false);
-                        selectedCell = null;
+                        if (board.makeMove(new Move(selectedCell.getRow(), selectedCell.getCol(), row, col, selectedCell.getPiece()))) {
+                            cell.setSelected(false);
+                            selectedCell = null;
+                        }
                     }
                 } else {
                     if (cell.isOccupied()) {
-                        System.out.println("Selected " + cell.getPiece().toString() + " at " + row + "," + col);
                         cell.setSelected(true);
                         selectedCell = cell;
-                    } else {
-                        System.out.println("Can't select an empty cell");
                     }
                 }
 

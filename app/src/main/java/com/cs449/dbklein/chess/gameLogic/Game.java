@@ -2,6 +2,7 @@ package com.cs449.dbklein.chess.gameLogic;
 
 import com.cs449.dbklein.chess.gameLogic.pieces.Bishop;
 import com.cs449.dbklein.chess.gameLogic.pieces.Color;
+import com.cs449.dbklein.chess.gameLogic.pieces.EmptyPiece;
 import com.cs449.dbklein.chess.gameLogic.pieces.King;
 import com.cs449.dbklein.chess.gameLogic.pieces.Knight;
 import com.cs449.dbklein.chess.gameLogic.pieces.Pawn;
@@ -44,6 +45,7 @@ public class Game {
         for (int i = 0; i < 8; i++) {
             board.getCell(6, i).setPiece(new Pawn(Color.WHITE));
         }
+        board.getCell(6, 4).setPiece(new EmptyPiece());
     }
 
     public Board getBoard() {

@@ -19,7 +19,7 @@ public abstract class Piece {
 
     public abstract ArrayList<Move> getValidMoves(int sourceRow, int sourceCol, Board board);
 
-//    public abstract boolean isValidDestination(int sourceRow, int sourceCol, int destRow, int destCol, Board board);
+    protected abstract boolean isValidDestination(int destRow, int destCol, Board board);
 
     public PieceType getType() {
         return type;
@@ -39,9 +39,6 @@ public abstract class Piece {
 
     @Override
     public String toString() {
-        return "Piece{" +
-                "type=" + type +
-                ", \tcolor=" + color +
-                '}';
+        return String.format("Piece{type=%7s, color=%s}", type, color);
     }
 }

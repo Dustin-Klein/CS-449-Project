@@ -29,15 +29,43 @@ public class Pawn extends Piece {
     @Override
     public ArrayList<Move> getValidMoves(int sourceRow, int sourceCol, Board board) {
         if (board.getCell(sourceRow, sourceCol).getPiece() != this)
-            throw new IllegalArgumentException("Piece not matching up at cells");
+            throw new IllegalStateException("Piece not matching up at cells");
+
+        ArrayList<Move> validMoves = new ArrayList<>();
 
         switch (color) {
             case WHITE:
-                return null;
+                if (sourceRow == 6) {
+                    if (isValidDestination(sourceRow - 1, sourceCol, board))
+                        validMoves.add(new Move(sourceRow, sourceCol, sourceRow - 1, sourceCol, this));
+                    if (isValidDestination(sourceRow - 2, sourceCol, board))
+                        validMoves.add(new Move(sourceRow, sourceCol, sourceRow - 2, sourceCol, this));
+                } else {
+                    if (isValidDestination(sourceRow - 1, sourceCol, board))
+                        validMoves.add(new Move(sourceRow, sourceCol, sourceRow - 1, sourceCol, this));
+                }
+                return validMoves;
             case BLACK:
-                return null;
+                if (sourceRow == 1) {
+                    if (isValidDestination(sourceRow + 1, sourceCol, board))
+                        validMoves.add(new Move(sourceRow, sourceCol, sourceRow + 1, sourceCol, this));
+                    if (isValidDestination(sourceRow + 2, sourceCol, board))
+                        validMoves.add(new Move(sourceRow, sourceCol, sourceRow + 2, sourceCol, this));
+                } else {
+                    if (isValidDestination(sourceRow + 1, sourceCol, board))
+                        validMoves.add(new Move(sourceRow, sourceCol, sourceRow + 1, sourceCol, this));
+                }
+                return validMoves;
             default:
-                return null;
+                throw new IllegalStateException("Pawn is neither Black or White");
         }
+    }
+
+    @Override
+    protected boolean isValidDestination(int destRow, int destCol, Board board) {
+        if (!board.inBounds(destRow, destCol))
+            return false;
+
+        return !board.getCell(destRow, destCol).isOccupied();
     }
 }

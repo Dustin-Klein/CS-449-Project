@@ -30,4 +30,9 @@ public class Knight extends Piece {
     public ArrayList<Move> getValidMoves(int sourceRow, int sourceCol, Board board) {
         return null;
     }
+
+    @Override
+    protected boolean isValidDestination(int destRow, int destCol, Board board) {
+        return false;
+    }
 }

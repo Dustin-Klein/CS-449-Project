@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.cs449.dbklein.chess.display.ChessCellImageView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/cell"
+<com.cs449.dbklein.chess.display.ChessCellView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</com.cs449.dbklein.chess.display.ChessCellImageView>
+    <!--<com.cs449.dbklein.chess.display.ChessCellImageView xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:id="@+id/cell"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+    <!--</com.cs449.dbklein.chess.display.ChessCellImageView>-->
+    <ImageView
+        android:id="@+id/piece"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/piece" />
+
+    <ImageView
+        android:id="@+id/selected_highlight"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/selected_highlight" />
+
+</com.cs449.dbklein.chess.display.ChessCellView>

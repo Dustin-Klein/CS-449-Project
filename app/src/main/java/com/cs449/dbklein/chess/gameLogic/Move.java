@@ -1,5 +1,7 @@
 package com.cs449.dbklein.chess.gameLogic;
 
+import com.cs449.dbklein.chess.gameLogic.pieces.Piece;
+
 public class Move {
 
     private int sourceRow;
@@ -7,7 +9,9 @@ public class Move {
     private int destRow;
     private int destCol;
 
-    public Move(int sourceRow, int sourceCol, int destRow, int destCol) {
+    private Piece piece;
+
+    public Move(int sourceRow, int sourceCol, int destRow, int destCol, Piece piece) {
         this.sourceRow = sourceRow;
         this.sourceCol = sourceCol;
         this.destRow = destRow;
@@ -28,6 +32,10 @@ public class Move {
 
     public int getDestCol() {
         return destCol;
+    }
+
+    public Piece getPiece() {
+        return piece;
     }
 
     public boolean equals(Move move2) {
