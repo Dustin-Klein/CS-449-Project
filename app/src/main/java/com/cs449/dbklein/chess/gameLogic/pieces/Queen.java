@@ -31,7 +31,6 @@ public class Queen extends Piece {
         return null;
     }
 
-    @Override
     protected boolean isValidDestination(int destRow, int destCol, Board board) {
         return false;
     }

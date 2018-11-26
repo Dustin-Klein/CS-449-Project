@@ -19,8 +19,6 @@ public abstract class Piece {
 
     public abstract ArrayList<Move> getValidMoves(int sourceRow, int sourceCol, Board board);
 
-    protected abstract boolean isValidDestination(int destRow, int destCol, Board board);
-
     public PieceType getType() {
         return type;
     }

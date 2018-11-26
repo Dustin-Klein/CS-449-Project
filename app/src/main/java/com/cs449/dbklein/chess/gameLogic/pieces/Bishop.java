@@ -28,12 +28,33 @@ public class Bishop extends Piece {
 
     @Override
     public ArrayList<Move> getValidMoves(int sourceRow, int sourceCol, Board board) {
-        return null;
+        if (board.getCell(sourceRow, sourceCol).getPiece() != this)
+            throw new IllegalStateException("Piece not matching up at cells");
+
+        ArrayList<Move> validMoves = new ArrayList<>();
+
+        // Up and Left
+//        for (int i = Math.min(sourceRow, sourceCol); i >= 0; i--) {
+//            System.out.println((sourceRow - i) + "," + (sourceCol - i));
+//        }
+        // Up and Right
+//        for (int i = Math.min(sourceRow, 8 - sourceCol); i >= 0; i--) {
+//            System.out.println((sourceRow - i) + "," + (sourceCol + i));
+//        }
+
+        for (int i = 0; i <= 7; i++) {
+            for (int j = 0; j <= 7; j++) {
+                if (isValidDestination(sourceRow, sourceCol, i, j, board)) {
+                    validMoves.add(new Move(sourceRow, sourceCol, i, j, this));
+                }
+            }
+        }
+        System.out.println(validMoves);
+
+        return validMoves;
     }
 
-    @Override
-    protected boolean isValidDestination(int destRow, int destCol, Board board) {
-        return false;
+    private boolean isValidDestination(int sourceRow, int sourceCol, int destRow, int destCol, Board board) {
+        return board.inBounds(destRow, destCol);
     }
-
 }

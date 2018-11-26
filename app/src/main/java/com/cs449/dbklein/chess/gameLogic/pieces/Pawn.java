@@ -36,36 +36,62 @@ public class Pawn extends Piece {
         switch (color) {
             case WHITE:
                 if (sourceRow == 6) {
-                    if (isValidDestination(sourceRow - 1, sourceCol, board))
+                    // forward one
+                    if (isValidDestination(sourceRow, sourceCol, sourceRow - 1, sourceCol, board))
                         validMoves.add(new Move(sourceRow, sourceCol, sourceRow - 1, sourceCol, this));
-                    if (isValidDestination(sourceRow - 2, sourceCol, board))
+                    // forward two
+                    if (isValidDestination(sourceRow, sourceCol, sourceRow - 2, sourceCol, board))
                         validMoves.add(new Move(sourceRow, sourceCol, sourceRow - 2, sourceCol, this));
                 } else {
-                    if (isValidDestination(sourceRow - 1, sourceCol, board))
+                    // forward one
+                    if (isValidDestination(sourceRow, sourceCol, sourceRow - 1, sourceCol, board))
                         validMoves.add(new Move(sourceRow, sourceCol, sourceRow - 1, sourceCol, this));
                 }
+
+                // take on diagonal
+                if (isValidDestination(sourceRow, sourceCol, sourceRow - 1, sourceCol - 1, board))
+                    validMoves.add(new Move(sourceRow, sourceCol, sourceRow - 1, sourceCol - 1, this));
+
+                if (isValidDestination(sourceRow, sourceCol, sourceRow - 1, sourceCol + 1, board))
+                    validMoves.add(new Move(sourceRow, sourceCol, sourceRow - 1, sourceCol + 1, this));
+
                 return validMoves;
             case BLACK:
                 if (sourceRow == 1) {
-                    if (isValidDestination(sourceRow + 1, sourceCol, board))
+                    // forward one
+                    if (isValidDestination(sourceRow, sourceCol, sourceRow + 1, sourceCol, board))
                         validMoves.add(new Move(sourceRow, sourceCol, sourceRow + 1, sourceCol, this));
-                    if (isValidDestination(sourceRow + 2, sourceCol, board))
+                    // forward two
+                    if (isValidDestination(sourceRow, sourceCol, sourceRow + 2, sourceCol, board))
                         validMoves.add(new Move(sourceRow, sourceCol, sourceRow + 2, sourceCol, this));
                 } else {
-                    if (isValidDestination(sourceRow + 1, sourceCol, board))
+                    // forward one
+                    if (isValidDestination(sourceRow, sourceCol, sourceRow + 1, sourceCol, board))
                         validMoves.add(new Move(sourceRow, sourceCol, sourceRow + 1, sourceCol, this));
                 }
+
+                // take on diagonal
+                if (isValidDestination(sourceRow, sourceCol, sourceRow + 1, sourceCol - 1, board))
+                    validMoves.add(new Move(sourceRow, sourceCol, sourceRow + 1, sourceCol - 1, this));
+
+                if (isValidDestination(sourceRow, sourceCol, sourceRow + 1, sourceCol + 1, board))
+                    validMoves.add(new Move(sourceRow, sourceCol, sourceRow + 1, sourceCol + 1, this));
+
                 return validMoves;
             default:
                 throw new IllegalStateException("Pawn is neither Black or White");
         }
     }
 
-    @Override
-    protected boolean isValidDestination(int destRow, int destCol, Board board) {
+    protected boolean isValidDestination(int sourceRow, int sourceCol, int destRow, int destCol, Board board) {
         if (!board.inBounds(destRow, destCol))
             return false;
 
-        return !board.getCell(destRow, destCol).isOccupied();
+        if (destCol != sourceCol) {
+            return board.getCell(destRow, destCol).getPiece().getColor() != color && board.getCell(destRow, destCol).getPiece().getColor() != Color.EMPTY;
+        } else {
+            return !board.getCell(destRow, destCol).isOccupied();
+        }
+
     }
 }

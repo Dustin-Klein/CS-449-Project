@@ -47,7 +47,6 @@ public class King extends Piece {
         return validMoves;
     }
 
-    @Override
     protected boolean isValidDestination(int destRow, int destCol, Board board) {
         if (!board.inBounds(destRow, destCol))
             return false;

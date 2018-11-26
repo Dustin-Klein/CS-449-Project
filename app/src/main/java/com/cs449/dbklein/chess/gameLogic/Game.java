@@ -11,6 +11,8 @@ import com.cs449.dbklein.chess.gameLogic.pieces.Rook;
 
 public class Game {
 
+    private Color turn;
+
     private Board board;
 
     public Game() {
