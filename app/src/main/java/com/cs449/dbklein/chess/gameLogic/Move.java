@@ -38,15 +38,18 @@ public class Move {
         return piece;
     }
 
-    public boolean equals(Move move2) {
-        if (this == move2) return true;
-        if (move2 == null) return false;
-        if (this.getClass() != move2.getClass()) return false;
+    @Override
+    public boolean equals(Object move2) {
+        Move otherMove = (Move) move2;
 
-        return this.sourceRow == move2.getSourceRow() &&
-                this.sourceCol == move2.getSourceCol() &&
-                this.destRow == move2.getDestRow() &&
-                this.destCol == move2.getDestCol();
+        if (this == otherMove) return true;
+        if (otherMove == null) return false;
+        if (this.getClass() != otherMove.getClass()) return false;
+
+        return this.sourceRow == otherMove.getSourceRow() &&
+                this.sourceCol == otherMove.getSourceCol() &&
+                this.destRow == otherMove.getDestRow() &&
+                this.destCol == otherMove.getDestCol();
     }
 
     @Override
