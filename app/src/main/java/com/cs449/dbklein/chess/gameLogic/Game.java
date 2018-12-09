@@ -11,13 +11,15 @@ import com.cs449.dbklein.chess.gameLogic.pieces.Rook;
 
 public class Game {
 
+    private Cell selectedCell = null;
     private Color turn;
-
     private Board board;
 
     public Game() {
         board = new Board();
         setupBoard();
+
+        turn = Color.WHITE;
     }
 
     private void setupBoard() {
@@ -52,5 +54,13 @@ public class Game {
 
     public Board getBoard() {
         return board;
+    }
+
+    public Cell getSelectedCell() {
+        return selectedCell;
+    }
+
+    public void setSelectedCell(Cell selectedCell) {
+        this.selectedCell = selectedCell;
     }
 }
