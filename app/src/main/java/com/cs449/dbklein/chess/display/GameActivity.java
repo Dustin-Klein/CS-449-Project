@@ -39,22 +39,39 @@ public class GameActivity extends AppCompatActivity {
 
                 final Cell cell = game.getBoard().getCell(row, col);
 
-                if (selectedCell != null) {
-                    if (selectedCell == cell) {
-                        cell.setSelected(false);
-                        selectedCell = null;
-                    } else {
-                        if (board.makeMove(new Move(selectedCell.getRow(), selectedCell.getCol(), row, col, selectedCell.getPiece()))) {
+                if (!game.isVictory()) {
+                    if (selectedCell != null) {
+                        if (selectedCell == cell) {
                             cell.setSelected(false);
                             selectedCell = null;
+                        } else {
+                            if (board.makeMove(new Move(selectedCell.getRow(), selectedCell.getCol(), row, col, selectedCell.getPiece()))) {
+                                game.switchTurn();
+
+                                cell.setSelected(false);
+                                selectedCell = null;
+                            }
+                        }
+                    } else {
+                        if (game.getTurn() == cell.getPiece().getColor()) {
+                            if (cell.isOccupied()) {
+                                cell.setSelected(true);
+                                selectedCell = cell;
+                            }
                         }
                     }
                 } else {
-                    if (cell.isOccupied()) {
-                        cell.setSelected(true);
-                        selectedCell = cell;
-                    }
+
+                    System.out.println("Game Over");
+//                    Context context = getApplicationContext();
+//                    CharSequence text = "Game Over";
+//                    int duration = Toast.LENGTH_LONG;
+//
+//                    Toast toast = Toast.makeText(context, text, duration);
+//                    toast.show();
+
                 }
+
 
                 // This tells the GridView to redraw itself
                 chessBoardAdapter.notifyDataSetChanged();
