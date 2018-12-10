@@ -37,7 +37,7 @@ public class GameActivity extends AppCompatActivity {
                 int row = position / 8;
                 int col = position % 8;
 
-                final Cell cell = game.getBoard().getCell(row, col);
+                final Cell cell = board.getCell(row, col);
 
                 if (!game.isVictory()) {
                     if (selectedCell != null) {
